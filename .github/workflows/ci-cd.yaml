@@ -59,12 +59,12 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t kagene/api-calculator:${{ env.VERSION }} .
+        docker build -t xolodno86/api-calculator:${{ env.VERSION }} .
 
     - name: Run Trivy scan
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: kagene/api-calculator:${{ env.VERSION }}
+        image-ref: xolodno86/api-calculator:${{ env.VERSION }}
         format: 'table'
         severity: 'CRITICAL,HIGH'
 
@@ -78,6 +78,6 @@ jobs:
     - name: Push Docker image
       if: success()
       run: |
-        docker push kagene/api-calculator:${{ env.VERSION }}
-        docker tag kagene/api-calculator:${{ env.VERSION }} kagene/api-calculator:latest
-        docker push kagene/api-calculator:latest
+        docker push xolodno86/api-calculator:${{ env.VERSION }}
+        docker tag xolodno86/api-calculator:${{ env.VERSION }} xolodno86/api-calculator:latest
+        docker push xolodno86/api-calculator:latest
